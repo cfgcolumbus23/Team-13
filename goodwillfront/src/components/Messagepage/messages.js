@@ -24,12 +24,31 @@ function Messages() {
     const {value} = event.target;
     setUserData({...userData, "message": value});
   }
+
+
   
 
   function handleSend(event) {
     setMessages(...messages,messages.push(userData.message));
-    fetch('http://127.0.0.1:5000/message', JSON.stringify(userData.message))
-      .then(response=>response.json());
+    fetch('http://localhost:5000/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData)
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(responseData => {
+      console.log(responseData);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
   }
 
 
