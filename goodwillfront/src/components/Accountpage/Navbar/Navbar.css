@@ -1,0 +1,47 @@
+/* Base styles for the navbar */
+.navbar {
+    background-color: #333; /* Dark background for modern look */
+    overflow: hidden; /* Clear floats */
+    display: flex; /* Use flexbox for alignment */
+    justify-content: center; /* Center the navigation links */
+    align-items: center; /* Align items vertically */
+  }
+  
+  /* Style the navigation links */
+  .navbar a {
+    display: block; /* Make links fill the container */
+    color: white; /* White text color */
+    text-align: center; /* Center text */
+    padding: 14px 20px; /* Add some padding for clickable area */
+    text-decoration: none; /* No underlines on the links */
+    transition: background-color 0.3s; /* Smooth background transition */
+  }
+  
+  /* Change the color of links on hover */
+  .navbar a:hover {
+    background-color: #ddd; /* Light grey background on hover */
+    color: black; /* Change text color on hover */
+  }
+  
+  /* Style for list items */
+  .navbar ul {
+    list-style-type: none; /* No bullets */
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Full width */
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-around; /* Distribute space evenly around items */
+  }
+  
+  /* Responsive styling */
+  @media screen and (max-width: 600px) {
+    .navbar ul {
+      flex-direction: column; /* Stack the links vertically */
+    }
+  
+    .navbar a {
+      padding: 10px; /* Reduce padding for smaller screens */
+      text-align: left; /* Align text to the left */
+    }
+  }
+  
