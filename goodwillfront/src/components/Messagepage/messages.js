@@ -1,17 +1,17 @@
+import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 import './components.css';
-import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import {useState} from 'react';
 
-import {
-  MainContainer,
-  ChatContainer,
-  MessageList,
-  Message,
-  MessageInput,
-  MessageGroup,
-} from "@chatscope/chat-ui-kit-react";
 import { react } from "@babel/types";
+import {
+  ChatContainer,
+  MainContainer,
+  Message,
+  MessageGroup,
+  MessageInput,
+  MessageList,
+} from "@chatscope/chat-ui-kit-react";
 import { string } from "yargs";
 
 function Messages() {
@@ -19,10 +19,7 @@ function Messages() {
   const [userData, setUserData] = useState({username: string, message: string});
   const[messages, setMessages] = useState([{username: string, message: string}]); // all the messages
 
-  fetch('https://emoji-api.com/emojis?access_key=***REMOVED***')
-      .then((response) => response.json())
-      .then((data) => data.forEach(messages.push(JSON.parse(data))
-      ))
+ 
   function handleInput(event) {
     const {value} = event.target;
     setUserData({...userData, "message": value});
@@ -31,7 +28,7 @@ function Messages() {
 
   function handleSend(event) {
     setMessages(...messages,messages.push(userData.message));
-    fetch('/api/message', JSON.stringify(userData.message))
+    fetch('http://127.0.0.1:5000/message', JSON.stringify(userData.message))
       .then(response=>response.json());
   }
 
