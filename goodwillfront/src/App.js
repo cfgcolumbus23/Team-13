@@ -1,16 +1,16 @@
-import Navbar from './components/Accountpage/Navbar/Navbar';
-import React, { useState } from "react";
-import ReactDOM from "react-dom";
 
+import { Route, Routes } from "react-router-dom";
+import './App.css';
+import Home from './components/Homepage/Homepage.js';
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div>
+    <div className="App">
       <Navbar>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>Increment</button>
-      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <Routes>
+        <Route path="/" element={ <Home/> } />
+      </Routes>
       </Navbar>
     </div>
 
