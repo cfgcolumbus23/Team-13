@@ -14,13 +14,16 @@ import {
 import { react } from "@babel/types";
 
 function Messages() {
+  // user input data
   const [userData, setUserData] = useState({username: "", message: ""});
+  const[messages, setMessages] = useState([]); // all the messages
+
+  fetch('api/messages').then(response=>response.json());
   function handleInput(event) {
     const {value} = event.target;
     setUserData({...userData, "message": value});
   }
-
-  const[messages, setMessages] = useState([]);
+  
 
   function handleSend(event) {
     setMessages(...messages,messages.push(userData.message));
