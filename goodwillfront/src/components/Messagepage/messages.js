@@ -12,13 +12,17 @@ import {
   MessageGroup,
 } from "@chatscope/chat-ui-kit-react";
 import { react } from "@babel/types";
+import { string } from "yargs";
 
 function Messages() {
   // user input data
-  const [userData, setUserData] = useState({username: "", message: ""});
-  const[messages, setMessages] = useState([]); // all the messages
+  const [userData, setUserData] = useState({username: string, message: string});
+  const[messages, setMessages] = useState([{username: string, message: string}]); // all the messages
 
-  fetch('api/messages').then(response=>response.json());
+  fetch('https://emoji-api.com/emojis?access_key=5ae2f4f6740c6dc6d6f246f19228e53d32b133e3')
+      .then((response) => response.json())
+      .then((data) => data.forEach(messages.push(JSON.parse(data))
+      ))
   function handleInput(event) {
     const {value} = event.target;
     setUserData({...userData, "message": value});
