@@ -6,6 +6,7 @@ import Navbar from './components/Accountpage/Navbar/Navbar.js';
 import Home from './components/Homepage/Homepage.js';
 import Login from './components/Loginpage/Loginpage.js';
 import JobPosting from './components/JobPostings/JobPostings.js';
+import Employee from './components/Employeepage/employee.js';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/job-posting" element={<JobPosting />} /> {/* New hardcoded job posting route */}
+        <Route path="/employee" element={<Employee />} />
       </Routes>
     </div>
   );
