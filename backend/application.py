@@ -9,7 +9,14 @@ app.secret_key = 'your_secret_key'
 @app.route("/test")
 @cross_origin()
 def home():
-    return {"test": ["test1","test2"]}
+    return "home"
+
+
+@app.route("/message", methods=["POST"])
+def message():
+    print(request.json)
+    return request.json
+
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=3000)
