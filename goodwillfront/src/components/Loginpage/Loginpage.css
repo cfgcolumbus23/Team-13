@@ -1,8 +1,53 @@
+
 .login-pane {
-    background-color: gray;
-    width: 20vw;
-    height: 30vh;
-}
-.login-button {
-    position: relative;
-}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background-color: #5a5a5a;
+    width: 50vw;
+    margin-left: 50vw;
+  }
+
+  .login-label {
+    color:white;
+    font-size: 70px;
+  }
+  
+  .input-field {
+    margin-top: 35px;
+  }
+  .input-label {
+    color:white;
+    margin-bottom: 10px;
+  }
+  
+  .input-field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .input-field input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+  }
+  
+  /* Login Button */
+  .login-btn {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background: #007bff;
+    color: #fff;
+    cursor: pointer;
+    margin-top: 25px;
+  }
+  
+  .login-btn:hover {
+    background: #0056b3;
+  }
+  
