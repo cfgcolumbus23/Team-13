@@ -13,9 +13,8 @@ import {
 } from "@chatscope/chat-ui-kit-react";
 import { react } from "@babel/types";
 
-function messages() {
+function Messages() {
   const [userData, setUserData] = useState({username: "", message: ""});
-
   function handleInput(event) {
     const {value} = event.target;
     setUserData({...userData, "message": value});
@@ -25,6 +24,8 @@ function messages() {
 
   function handleSend(event) {
     setMessages(...messages,messages.push(userData.message));
+    fetch('/api/message', JSON.stringify(userData.message))
+      .then(response=>response.json());
   }
 
 
@@ -45,4 +46,4 @@ function messages() {
   );
 }
 
-export default messages;
+export default Messages;
