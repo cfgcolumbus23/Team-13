@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import JobPosting from '../JobPostings/JobPostings';
 import MessageDisplay from '../MessageBoard/MessageBoard';
 import PostButton from '../PostButton/PostButton';
+import PostBoard from '../PostBoard/PostBoard';
 import './Homepage.css';
 
 function Homepage() {
@@ -24,7 +25,7 @@ function Homepage() {
             </div>
             <div className="horizontal-container">
                 <div className="column-container post-container">
-
+                    <PostBoard />
                 </div>
                 <div className="column-container job-container">
                     <JobPosting />

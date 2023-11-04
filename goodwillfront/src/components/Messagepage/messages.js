@@ -15,8 +15,8 @@ import {
 
 function Messages() {
   // user input data
-  const [userData, setUserData] = useState({username: string, message: string});
-  const[messages, setMessages] = useState([{username: string, message: string}]); // all the messages
+  const [userData, setUserData] = useState({username: "", message: ""});
+  const[messages, setMessages] = useState([{username: "", message: ""}]); // all the messages
 
  
   function handleInput(event) {
