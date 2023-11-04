@@ -53,7 +53,8 @@ function Messages() {
         <ChatContainer>
           <MessageList>
             
-            {messages.map((content, index)=>{return (<Message model={{sender: content.username, message: content.message}}></Message>)}) }
+            {messages.map((content, index)=>
+              {return (<Message model={{sender: content.username, message: content.message}}></Message>)}) }
 
           </MessageList>
           <MessageInput placeholder="Type message here" onChange="handleInput"/>
