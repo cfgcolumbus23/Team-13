@@ -1,16 +1,7 @@
 // File: MessageDisplay.js
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './MessageBoard.css'; // Create a CSS file to style your messages
-import {
-  ChatContainer,
-  MainContainer,
-  Message,
-  MessageGroup,
-  MessageInput,
-  MessageList,
-} from "@chatscope/chat-ui-kit-react";
-import { useState, useEffect } from 'react';
 
 const MessageDisplay = () => {
   const [messages, setMessages] = useState([]); 
