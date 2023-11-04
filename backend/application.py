@@ -46,6 +46,7 @@ def message():
 @app.route("/login", methods=["POST"])
 def check_login():
     dict = request.json
+    print(dict)
     username = dict['username']
     password = dict['password']
     with engine.connect() as conn:
