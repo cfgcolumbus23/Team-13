@@ -5,17 +5,20 @@
   border-radius: 5px;
   overflow: hidden;
   margin: 10px;
+  width: 400px;
+  margin-left: 140px;
   /* Add any other styling you prefer */
 }
 
 .card-image {
-  height: 100px; /* Adjust the height as needed */
+  height: 200px; /* Adjust the height as needed */
   object-fit: cover;
   background-color: gray;
 }
 
 .card-content {
   padding: 10px;
+  height: 200px;
 }
 
 .card-title {

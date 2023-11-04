@@ -17,6 +17,7 @@ function Homepage() {
         setSearchQuery(event.target.value);
     };
 
+
     // Potentially here you could also filter your messages or job postings based on the searchQuery
     // const filteredMessages = messages.filter(message => message.includes(searchQuery));
 
@@ -42,6 +43,7 @@ function Homepage() {
                         <PostBoard />
                     </div>
                     <div className="column-container job-container">
+                        <JobPosting />
                         <JobPosting />
                         <JobPosting />
                     </div>

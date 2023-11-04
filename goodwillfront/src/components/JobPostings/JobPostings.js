@@ -19,12 +19,12 @@ function JobPosting() {
     return (
         <div className="card">
             <div className="card-image" ></div>
-      <div className="card-content">
-        <h2 className="card-title">title</h2>
-        <h3 className="card-subtitle">subtitle</h3>
-        <p className="card-description">description</p>
-      </div>
-    </div>
+                <div className="card-content">
+                <h2 className="card-title">title</h2>
+                <h3 className="card-subtitle">subtitle</h3>
+                <p className="card-description">description</p>
+            </div>
+        </div>
     );
 }
 
