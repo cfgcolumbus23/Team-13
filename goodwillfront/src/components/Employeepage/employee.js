@@ -1,37 +1,72 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './employee.css';
 
 const Employee = () => {
+    // Hardcoded data for the employee Lisa
+    const employeeData = {
+        name: 'Lisa Smith',
+        phone: '555-123-4567',
+        address: '1234 Maple Street, Columbus, OH 43215',
+        email: 'lisa.smith@goodwillcolumbus.org',
+        employeeId: 'GS2345',
+        jobTitle: 'Retail Associate',
+        startDate: 'March 12, 2020',
+        hourlyWage: '$15.00',
+        paySchedule: 'Bi-weekly',
+        hoursWorked: '80 hours',
+    };
 
     return (
-        <><div class="General">
-            <h1>Employee Information</h1>
-            <h2>Name</h2>
-            <p>Display name</p>
-            <h2>Phone:</h2>
-            <p>Display phone</p>
-            <h2>Address:</h2>
-            <p>Display address</p>
-            <h2>Email:</h2>
-            <p>Display email</p>
-            <h2>Employee ID:</h2>
-            <p>Display ID</p>
-        </div><div class="job">
-                <h2>Job Title</h2>
-                <p>Display title</p>
-                <h2>Employment startdate</h2>
-                <p>Display employment start date</p>
-            </div><div class="pay">
-                <p>Display hourly wage</p>
-                <h2>Pay Schedule</h2>
-                <p>Display pay sched</p>
-                <h2>Hours worked</h2>
-                <p>Display hours worked in pay period</p>
-            </div></>  
-            )
+        <div className="employee-container">
+            <div className="employee-card">
+                <h1>👤 Employee Information</h1>
+                <div className="info-section">
+                    <h2>📛 Name</h2>
+                    <p>{employeeData.name}</p>
+                </div>
+                <div className="info-section">
+                    <h2>📞 Phone:</h2>
+                    <p>{employeeData.phone}</p>
+                </div>
+                <div className="info-section">
+                    <h2>🏠 Address:</h2>
+                    <p>{employeeData.address}</p>
+                </div>
+                <div className="info-section">
+                    <h2>📧 Email:</h2>
+                    <p>{employeeData.email}</p>
+                </div>
+                <div className="info-section">
+                    <h2>🆔 Employee ID:</h2>
+                    <p>{employeeData.employeeId}</p>
+                </div>
+            </div>
+            <div className="employee-card">
+                <div className="info-section">
+                    <h2>💼 Job Title</h2>
+                    <p>{employeeData.jobTitle}</p>
+                </div>
+                <div className="info-section">
+                    <h2>📅 Employment Start Date</h2>
+                    <p>{employeeData.startDate}</p>
+                </div>
+            </div>
+            <div className="employee-card">
+                <div className="info-section">
+                    <h2>💵 Hourly Wage</h2>
+                    <p>{employeeData.hourlyWage}</p>
+                </div>
+                <div className="info-section">
+                    <h2>🗓 Pay Schedule</h2>
+                    <p>{employeeData.paySchedule}</p>
+                </div>
+                <div className="info-section">
+                    <h2>⏰ Hours Worked</h2>
+                    <p>{employeeData.hoursWorked}</p>
+                </div>
+            </div>
+        </div>  
+    );
 }
 
 export default Employee;
-
-
-           
