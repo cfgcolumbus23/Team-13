@@ -41,16 +41,18 @@
   
     .navbar a {
       padding: 10px; /* Reduce padding for smaller screens */
-      text-align: left; /* Align text to the left */
+      text-align: left; /*Align text to the left
 
       .navbar {
         display: flex;
-        flex-direction: horizontal; /* Set the direction to column */
+        justify-content: start;
+        align-items: center;
+        flex-direction: vertical; /* Set the direction to column */
         height: 100vh;
-        background-color: #333; /* Customize background color if needed */
+        background-color: blue; /* Customize background color if needed */
         color: white; /* Customize text color if needed */
         padding: 10px; /* Add padding to your Navbar */
       }
     }
-  }
+  
   
