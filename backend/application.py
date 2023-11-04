@@ -32,7 +32,7 @@ def posts():
 
 
 @app.route("/addposts", methods=["GET", "POST"])
-def posts():
+def add_posts():
     username = dict['username']
     content = dict['content']
     likes = dict['likes']
