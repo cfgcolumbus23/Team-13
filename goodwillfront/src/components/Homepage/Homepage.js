@@ -43,9 +43,6 @@ function Homepage() {
                     <div className="column-container job-container">
                         <JobPosting />
                         <JobPosting />
-                        <JobPosting />
-                        <JobPosting />
-                        <JobPosting />
                     </div>
                 </div>
             </div>
