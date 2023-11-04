@@ -9,7 +9,11 @@ Copy code
 /* Add any additional styles you need for layout */
 /* .horizontal-container, .content-container {
   /* Styles to ensure they don't overflow past the navbar */
- 
+
+.header-logo {
+  height: 110px;
+  width: 200px;
+}
 
 .page {
     display: flex;

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import JobPosting from '../JobPostings/JobPostings';
 import PostBoard from '../PostBoard/PostBoard';
 import './Homepage.css';
+import icon from './Goodwill-Logo.png';
 
 
 function Homepage() {
@@ -109,7 +110,7 @@ function Homepage() {
         <div className='page'>
             <div className="horizontal-container">
                 <div className="header-title">
-                    <h1 className='header-text'>Goodwill</h1>
+                  <img src={icon} className="header-logo"/>
                 </div>
                 <div className="search-bar">
                     <input
