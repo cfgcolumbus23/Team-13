@@ -15,7 +15,7 @@ function Navbar() {
         <Sidebar style={{ height: "100vh" }}>
             <Menu>
                 <Link to="/" ><MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem></Link>
-                <Link to="/messages" ><MenuItem icon={<ReceiptOutlinedIcon />}>Messages</MenuItem></Link>
+                <Link to="/messages" ><MenuItem icon={<ReceiptOutlinedIcon />}>Announcements</MenuItem></Link>
                 <Link to="/login" ><MenuItem icon={<PeopleOutlinedIcon />}>Login</MenuItem></Link>
             </Menu>
         </Sidebar>
