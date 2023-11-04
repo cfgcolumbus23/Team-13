@@ -3,10 +3,10 @@ import { Route, Routes } from "react-router-dom";
 import './PostBoard.css';
 
 import { react } from "@babel/types";
-
+import { useNavigate } from "react-router-dom";
 
 function PostBoard() {
-
+  const navigate = useNavigate();
   const [posts, setPosts] = useState([{username: "", content: "", likes: 0}])
   const [userPost, setUserPost] = useState({username: "", content: "", likes: 0})
   const [showForm, setShowForm] = useState(false)
@@ -54,8 +54,35 @@ function PostBoard() {
   }
   function handleHideForm() {
     setShowForm(false);
+    navigate("/");
   }
 
+  const [postsDisplay, setPostsDisplay] = useState([]); 
+  useEffect(() => {
+
+      const fetchPosts = () => {
+          fetch('http://127.0.0.1:5000/posts', {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+          })
+          .then(response => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json(); 
+          })
+          .then(data => {
+            setPostsDisplay(data); 
+          })
+          .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+          });
+        };
+  
+      fetchPosts();
+    }, []); 
 
 // load the posts array with data from the backend once the component mounts
   useEffect(() => {
@@ -105,7 +132,7 @@ function PostBoard() {
       ) : (
         <div>
           <ul style={{ listStyleType: "none", padding: 0 }}>
-            {posts.map((post, index) => (
+            {postsDisplay.map((post, index) => (
               <li className="post-item" key={index}>
                 <div className="post-header">
                   <strong>Username:</strong> {post.username}

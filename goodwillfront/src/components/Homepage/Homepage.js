@@ -125,12 +125,12 @@ function Homepage() {
                 <div className="post-board-container">
                     
                     <div>
-                        {posts.map(item => (
+                        {/* {posts.map(item => (
                             <div key={item.username}>
                                 <PostBoard />
                             </div>
-                        ))}
-                        
+                        ))} */}
+                        <PostBoard />
                     </div>
                 </div>
                 <div className="column-container job-container">
