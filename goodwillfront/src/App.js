@@ -9,6 +9,7 @@ import JobPosting from './components/JobPostings/JobPostings.js';
 import Login from './components/Loginpage/Loginpage.js';
 import MessageDisplay from './components/MessageBoard/MessageBoard';
 import SideBar from './components/SideBar.js';
+import ChatBox from './components/Messagepage/messages';
 
 const App = () => {
   const [sidebarOpen, setSideBarOpen] = useState(false);
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/messages" element={<MessageDisplay />} />
         <Route path="/job-posting" element={<JobPosting />} />
         <Route path="/employee" element={<Employee />} />
+        <Route path="/chat" element={<ChatBox />} />
       </Routes>
  
     </span>

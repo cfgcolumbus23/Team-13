@@ -6,11 +6,7 @@ import { react } from "@babel/types";
 import { useNavigate } from "react-router-dom";
 
 function PostBoard() {
-<<<<<<< HEAD
-
-=======
   const navigate = useNavigate();
->>>>>>> reverted
   const [posts, setPosts] = useState([{username: "", content: "", likes: 0}])
   const [userPost, setUserPost] = useState({username: "", content: "", likes: 0})
   const [showForm, setShowForm] = useState(false)
@@ -26,11 +22,7 @@ function PostBoard() {
 
 
   function handlePost() {
-<<<<<<< HEAD
-    fetch('http://127.0.0.1:5000/posts', {
-=======
     const sendPost = () => {fetch('http://127.0.0.1:5000/addposts', {
->>>>>>> reverted
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -94,11 +86,6 @@ function PostBoard() {
 
 // load the posts array with data from the backend once the component mounts
   useEffect(() => {
-<<<<<<< HEAD
-    fetch('http://127.0.0.1:5000/posts')
-        .then(response => response.json())
-        .then((postData)=> {setPosts(postData)});
-=======
     const fetchMessages = () => {
       fetch('http://127.0.0.1:5000/posts', {
         method: 'GET',
@@ -121,7 +108,6 @@ function PostBoard() {
     };
 
     fetchMessages();
->>>>>>> reverted
   }, []);
 
 

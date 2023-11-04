@@ -7,10 +7,9 @@ Copy code
 }
 
 /* Add any additional styles you need for layout */
-.horizontal-container,
-.content-container {
+/* .horizontal-container, .content-container {
   /* Styles to ensure they don't overflow past the navbar */
-}
+ 
 
 .page {
     display: flex;

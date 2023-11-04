@@ -100,9 +100,6 @@ function Homepage() {
             </div>
             <div className="content-container">
                 <div className="post-board-container">
-<<<<<<< HEAD
-                    <PostBoard />
-=======
                     
                     <div>
                         {/* {posts.map(item => (
@@ -112,7 +109,6 @@ function Homepage() {
                         ))} */}
                         <PostBoard />
                     </div>
->>>>>>> reverted
                 </div>
                 <div className="column-container job-container">
                         <div>

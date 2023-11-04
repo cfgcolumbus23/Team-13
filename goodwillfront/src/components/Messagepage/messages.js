@@ -1,205 +1,136 @@
-<<<<<<< HEAD
-import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import { useState } from 'react';
-import { Route, Routes } from "react-router-dom";
-import './messages.css';
-=======
-import React, { useState, useEffect } from 'react';
->>>>>>> reverted
+import React, { useState } from 'react';
 
 function ChatBox() {
-  const [messageHistory, setMessageHistory] = useState([])    // array of past messages
-  const [newMessage, setNewMessage] = useState({ username: '', message: '', receivername: '' })   // object of new input message
-
-
-// load the posts array with data from the backend once the component mounts
-useEffect(() => {
-  const fetchMessages = () => {
-    fetch('http://127.0.0.1:5000/texts', {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json(); 
-    })
-    .then(data => {
-      setMessageHistory(data); 
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
-  };
-
-  fetchMessages(); 
-}, []);
-
+  const [messageHistory, setMessageHistory] = useState([]);
+  const [newMessage, setNewMessage] = useState({ username: '', message: '', receivername: '' });
 
   const handleSendMessage = () => {
-    // create an new object
     const message = {
       username: newMessage.username,
       message: newMessage.message,
-      receivername: newMessage.receivername, 
+      receivername: newMessage.receivername,
       timestamp: new Date().toLocaleString(),
     };
+
     // post request to insert new message to database
-   const sendMessage = () => {
-    fetch('http://127.0.0.1:5000/insert', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(message)
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-      return response.json();
+    fetch('http://localhost:5000/api/message', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message)
     })
-    .then(responseData => {
-      console.log(responseData);
-    })
-    .catch(error => {
-      console.error('There was a problem with the fetch operation:', error);
-    });
-  };
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(responseData => {
+        console.log(responseData);
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
 
-  sendMessage();
-
-  // Update the state and clear the input
-  setMessageHistory([...messageHistory, message]);
-  setNewMessage({ username: '', message: '', receivername: '' });
-}
-
+    // Update the state and clear the input
+    setMessageHistory([...messageHistory, message]);
+    setNewMessage({ username: '', message: '', receivername: '' });
+  }
 
   return (
-    <div>
-      <h1>Chat Room</h1>
-      <ul>
-        {messageHistory.map((message, index) => (
-          <li key={index}>
-            <strong>From: </strong>{message.username}
-            <br />
-            <strong>To: </strong>{message.receivername}
-            <br />
-            {message.message}
-            <br />
-            <small>{message.timestamp}</small>
-          </li>
-        ))}
-      </ul>
-      <div>
+    <div style={styles.chatContainer}>
+      <h1 style={styles.header}>Chat Room</h1>
+      <div style={styles.messageHistory}>
+        <ul style={styles.messageList}>
+          {messageHistory.map((message, index) => (
+            <li key={index} style={styles.messageItem}>
+              <strong>From: </strong>{message.username}
+              <br />
+              <strong>To: </strong>{message.receivername}
+              <br />
+              {message.message}
+              <br />
+              <small>{message.timestamp}</small>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div style={styles.messageInputContainer}>
         <input
           type="text"
           value={newMessage.receivername}
           onChange={(e) => setNewMessage({ ...newMessage, receivername: e.target.value })}
-          placeholder="receivername"
+          placeholder="Receiver name"
+          style={styles.input}
         />
         <input
           type="text"
           value={newMessage.message}
           onChange={(e) => setNewMessage({ ...newMessage, message: e.target.value })}
           placeholder="Your message"
+          style={styles.input}
         />
-        <button onClick={handleSendMessage}>Send</button>
+        <button onClick={handleSendMessage} style={styles.sendButton}>Send</button>
       </div>
     </div>
   );
 }
 
+const styles = {
+  chatContainer: {
+    width: '100%',
+    maxWidth: '600px',
+    margin: '0 auto',
+    padding: '20px',
+    boxSizing: 'border-box',
+    backgroundColor: '#f9f9f9',
+    border: '1px solid #ddd',
+    borderRadius: '8px',
+    boxShadow: '0 2px 10px rgba(0, 0, 0, 0.1)',
+  },
+  header: {
+    textAlign: 'center',
+    margin: '0',
+    padding: '10px 0',
+  },
+  messageHistory: {
+    height: '500px',
+    overflowY: 'auto',
+    padding: '10px',
+    backgroundColor: '#fff',
+    border: '1px solid #ddd',
+    borderRadius: '4px',
+    marginBottom: '20px',
+  },
+  messageList: {
+    listStyleType: 'none',
+    padding: 0,
+  },
+  messageItem: {
+    textAlign: 'left',
+    padding: '8px',
+    borderBottom: '1px solid #eee',
+  },
+  messageInputContainer: {
+    display: 'flex',
+    justifyContent: 'space-between',
+  },
+  input: {
+    flex: 1,
+    marginRight: '10px',
+    padding: '10px',
+    borderRadius: '4px',
+    border: '1px solid #ddd',
+  },
+  sendButton: {
+    padding: '10px 20px',
+    background: '#007bff',
+    color: '#fff',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+  },
+};
+
 export default ChatBox;
-// import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-// import { useState } from 'react';
-// import { Route, Routes } from "react-router-dom";
-
-// import { react } from "@babel/types";
-// import {
-//   ChatContainer,
-//   MainContainer,
-//   Message,
-//   MessageGroup,
-//   MessageInput,
-//   MessageList,
-// } from "@chatscope/chat-ui-kit-react";
-
-// function ChatBox() {
-//   // user input data
-//   const [userData, setUserData] = useState({username: "", message: "", receiver: ""});
-// // all the messages
-//   const [messageHistory, setMessageHistory] = useState([{username: "", message: "", receiver: ""}])
-
- 
-//   function handleInput(event) {
-//     const {value} = event.target;
-//     setUserData({...userData, "message": value});
-//   }
-//   function handleSend(event) {
-//     messageHistory.push(userData);
-//     setMessageHistory(...messageHistory);
-
-//     fetch('http://localhost:5000/messages', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(userData)
-//   })
-//     .then(response => {
-//       if (!response.ok) {
-//         throw new Error('Network response was not ok');
-//       }
-//       return response.json();
-//     })
-//     .then(responseData => {
-//       console.log(responseData);
-//     })
-//     .catch(error => {
-//       console.error('There was a problem with the fetch operation:', error);
-//     });
-//   }
-
-
-//   return (
-//     <div>
-//       <ul>
-//   {messageHistory.map((message, index) => (
-//     <li key={index}>
-//       <strong>Username:</strong> {message.username}
-//       <br />
-//       <strong>Message:</strong> {message.message}
-//       <br />
-//       <strong>Receiver:</strong> {message.receiver}
-//       <br />
-//     </li>
-//   ))}
-// </ul>
-
-
-//       <form>
-//               <input type="text" onChange={handleInput} placeholder="sample message"></input>
-//                 </form>
-//                 <button type="submit" className="btn btn-primary btn-block" onClick={handleSend}>Submit</button>
-//       {/* <MainContainer>
-//         <ChatContainer>
-//           <MessageList> 
-            
-//             {messages.map((content, index)=>{return (<Message model={{sender: content.username, message: content.message}}></Message>)}) }
-
-//           </MessageList>
-//           <form>
-//               <input type="text" onChange={handleInput} placeholder="sample message"></input>
-//                 </form>
-//                 <button type="submit" className="btn btn-primary btn-block" onClick={handleSend}>Submit</button>
-//         </ChatContainer>
-//       </MainContainer> */}
-//     </div> 
-//   );
-// }
-
-// export default ChatBox;
