@@ -1,7 +1,6 @@
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
-import './components.css';
 
 import { react } from "@babel/types";
 import {
@@ -12,12 +11,11 @@ import {
   MessageInput,
   MessageList,
 } from "@chatscope/chat-ui-kit-react";
-import { string } from "yargs";
 
 function Messages() {
   // user input data
-  const [userData, setUserData] = useState({username: string, message: string});
-  const[messages, setMessages] = useState([{username: string, message: string}]); // all the messages
+  const [userData, setUserData] = useState({username: "", message: ""});
+  const[messages, setMessages] = useState([{username: "", message: ""}]); // all the messages
 
  
   function handleInput(event) {

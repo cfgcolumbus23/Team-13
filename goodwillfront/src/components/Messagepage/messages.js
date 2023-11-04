@@ -12,7 +12,6 @@ import {
   MessageInput,
   MessageList,
 } from "@chatscope/chat-ui-kit-react";
-import { string } from "yargs";
 
 function Messages() {
   // user input data
