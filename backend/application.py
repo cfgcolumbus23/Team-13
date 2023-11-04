@@ -20,7 +20,7 @@ def testing():
 
 
 @app.route("/posts")
-def testing():
+def posts():
     with engine.connect() as conn:
         result = conn.execute(text("SELECT * FROM posts"))
         table = result.all()
