@@ -1,45 +1,74 @@
-import React, { useState } from 'react';
+import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
+import { useState } from 'react';
+import { Route, Routes } from "react-router-dom";
+import './components.css';
 
-function PostButton() {
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
-    const [message, setMessage] = useState('');
-    const [messages, setMessages] = useState([]);
+import { react } from "@babel/types";
+import {
+  ChatContainer,
+  MainContainer,
+  Message,
+  MessageGroup,
+  MessageInput,
+  MessageList,
+} from "@chatscope/chat-ui-kit-react";
+import { string } from "yargs";
 
-    const openPopup = () => setIsPopupOpen(true);
-    const closePopup = () => setIsPopupOpen(false);
+function Messages() {
+  // user input data
+  const [userData, setUserData] = useState({username: string, message: string});
+  const[messages, setMessages] = useState([{username: string, message: string}]); // all the messages
 
-    const handleMessageChange = (e) => setMessage(e.target.value);
+ 
+  function handleInput(event) {
+    const {value} = event.target;
+    setUserData({...userData, "message": value});
+  }
 
-    const postMessage = () => {
-        if (message.trim()) {
-            setMessages([...messages, message]);
-            setMessage(''); // Clear the input after posting
-            closePopup();
-            //call another service or send the message array to an API or backend
-        }
-    };
 
-    return (
-        <div>
-            <button onClick={openPopup}>Post a Message</button>
-            {isPopupOpen && (
-                <div className="popup">
-                    <textarea
-                        value={message}
-                        onChange={handleMessageChange}
-                        placeholder="Type your message here..."
-                    />
-                    <button onClick={postMessage}>Post</button>
-                    <button onClick={closePopup}>Cancel</button>
-                </div>
-            )}
-            <div className="messages-container">
-                {messages.map((msg, index) => (
-                    <div key={index}>{msg}</div>
-                ))}
-            </div>
-        </div>
-    );
+  
+
+  function handleSend(event) {
+    setMessages(...messages,messages.push(userData.message));
+    fetch('http://localhost:5000/messages', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(userData)
+  })
+
+
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(responseData => {
+      console.log(responseData);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+  }
+
+
+  return (
+    <div style={{ position: "relative", height: "500px" }}>
+      <MainContainer>
+        <ChatContainer>
+          <MessageList>
+            
+            {messages.map((content, index)=>{return (<Message model={{sender: content.username, message: content.message}}></Message>)}) }
+
+          </MessageList>
+          <MessageInput placeholder="Type message here" onChange="handleInput"/>
+          <button type="button" onClick="handleSend">Send</button>
+        </ChatContainer>
+      </MainContainer>
+    </div> 
+  );
 }
 
-export default PostButton;
+export default Messages;
