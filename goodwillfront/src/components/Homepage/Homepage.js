@@ -1,8 +1,7 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import JobPosting from '../JobPostings/JobPostings';
 import PostBoard from '../PostBoard/PostBoard';
 import './Homepage.css';
-import { useEffect } from 'react';
 
 
 function Homepage() {
@@ -77,7 +76,7 @@ function Homepage() {
     //   ]);
     //   //ethan is that guy
       const filteredItems = jobs.filter(item =>
-        (item.title.includes(searchQuery) || item.company.includes(searchQuery) || item.description.includes(searchQuery))
+        (item.title.includes(searchQuery) || item.company.includes(searchQuery) || item.des.includes(searchQuery))
       );
 
     // Potentially here you could also filter your messages or job postings based on the searchQuery
