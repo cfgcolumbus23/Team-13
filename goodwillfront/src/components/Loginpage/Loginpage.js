@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './Loginpage.css';
+import {Link } from "react-router-dom";
 
 
 function Loginpage() {
@@ -28,7 +29,9 @@ function Loginpage() {
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
-        return response.json();
+
+        response.redirect("http://localhost:3000/employee ");
+       // return response.json();
       })
       .then(responseData => {
         console.log(responseData);
@@ -52,9 +55,11 @@ function Loginpage() {
                         <label htmlFor="password">Password:</label>
                         <input type="password" className="form-control" id="password" placeholder="Enter password" onChange={handlePasswordInput}/>
                     </div>
+                    <Link to="/employee">
                     <button type="submit" className="btn btn-primary btn-block" onClick={handleLogin}>Login</button>
-                </form>
-            </div>
+            </Link> 
+            </form>
+        </div>
         </div>
     </div>
     );
