@@ -18,7 +18,7 @@ def testing():
     return "works"
 
 
-@app.route("/api/message", methods=["POST"])
+@app.route("/message", methods=["POST"])
 def message():
     print(request.json)
     return request.json
