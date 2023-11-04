@@ -1,89 +1,83 @@
+Copy code
+/* Homepage.css */
+
 .page {
-    height: 100vh;
-    width: 90vw;
-    margin: auto; /* Center the page horizontally */
+  margin-left: 100px; /* Adjust this value to the width of your navbar */
+  /* Rest of your styles */
 }
 
-.column-container {
+/* Add any additional styles you need for layout */
+.horizontal-container,
+.content-container {
+  /* Styles to ensure they don't overflow past the navbar */
+}
+
+.page {
     display: flex;
     flex-direction: column;
-    /* Ensures that children components are stacked vertically */
+    align-items: center;
+    width: 100%;
 }
 
 .horizontal-container {
+    width: 100%;
     display: flex;
-    /* Aligns children components horizontally */
-}
-
-.header-title {
-    flex-basis: 24vw; 
-    height: 12vh;
-    display: flex;
+    justify-content: space-between;
     align-items: center;
-    justify-content: center;
-    /* Center content within the header title */
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background-color: #f8f9fa;
 }
 
-.search-bar {
-    flex-grow: 1; 
-    height: 12vh;
+.header-title, .search-bar {
+    flex-basis: 50%;
+}
+
+.content-container {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 20px;
-    /* Padding inside the search bar for aesthetic spacing */
+    width: 100%;
 }
 
-.search-input {
-    width: 100%; 
-    padding: 10px;
-    font-size: 16px;
-    border: 2px solid #00015a; 
-    border-radius: 5px;
-    box-sizing: border-box; /* Includes padding and border in width calculation */
-    /* Modern and clean look for the search input */
+.post-board-container {
+    flex: 3; /* Gives more space to the PostBoard */
+    padding: 1rem;
 }
 
-.search-input::placeholder {
-    color: #00015a; /* Placeholder text color matches the border */
+.job-postings-container {
+    flex: 1; /* Less space for JobPostings */
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.search-input:focus {
-    outline: none; 
-    border-color: #555; 
-    box-shadow: 0 0 3px #aaa; /* Subtle shadow for depth */
-}
+/* Add this to Homepage.css or create a separate PostBoard.css and import it */
 
-.post-container {
-    flex-basis: 42vw; 
-    height: 88vh;
-    background-color: #3498db; 
-    /* Represents the post section area */
-}
-
-.job-container {
-    flex-basis: 41vw;
-    background-color: #2980b9; 
-    /* Represents the job listings area */
-}
-
-
-@media (max-width: 768px) {
-    .horizontal-container {
-        flex-direction: column;
-        /* Stack horizontally aligned items vertically on smaller screens */
-    }
-
-    .header-title, .search-bar {
-        width: 100%;
-        margin-bottom: 10px; /* Adds spacing between stacked items */
-    }
-
-    .search-bar {
-        padding: 0 10px; 
-    }
-
-    .search-input {
-        width: calc(100% - 20px); /* Adjusts width to account for padding */
-    }
-}
+.posts-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .post-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .post-header {
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  
+  .post-content {
+    margin-bottom: 8px;
+  }
+  
+  .post-footer {
+    text-align: right;
+    color: #777;
+  }
+  
+/* Add any additional styling you need for JobPosting and PostBoard components */
