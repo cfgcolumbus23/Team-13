@@ -38,7 +38,7 @@ function Homepage() {
                 </div>
                 <div className="horizontal-container">
                     <div className="column-container post-container">
-                        {/* You would place your PostButton and MessageDisplay components here if needed */}
+                        <PostBoard></PostBoard>
                     </div>
                     <div className="column-container job-container">
                         <JobPosting />
