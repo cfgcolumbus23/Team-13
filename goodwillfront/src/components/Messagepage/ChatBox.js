@@ -45,7 +45,7 @@ function ChatBox() {
         />
         <input
           type="text"
-          value={newMessage.username}
+          value={newMessage.message}
           onChange={(e) => setNewMessage({ ...newMessage, message: e.target.value })}
           placeholder="Your message"
         />
