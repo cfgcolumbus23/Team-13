@@ -6,7 +6,7 @@ function ChatBox() {
 
   const handleSendMessage = () => {
     const message = {
-      username: newMessage.username,
+      username: "Lucy",
       message: newMessage.message,
       receivername: newMessage.receivername,
       timestamp: new Date().toLocaleString(),
