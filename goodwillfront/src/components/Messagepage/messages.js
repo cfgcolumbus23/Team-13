@@ -1,7 +1,7 @@
 import styles from "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
 import { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
-import './components.css';
+import './messages.css';
 
 import { react } from "@babel/types";
 import {
