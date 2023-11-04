@@ -73,7 +73,7 @@ const MessageDisplay = () => {
       console.error('There was a problem with the fetch operation:', error);
     });
   }
-
+  console.log(messages)
   const messageElements = messages.map((message, index) => (
     <div class='border-black background message-square'key={index}>
       <strong>Username: {message.username}</strong> 

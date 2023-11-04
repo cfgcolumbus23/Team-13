@@ -31,6 +31,16 @@ def posts():
     return result_dict
 
 
+@app.route("/jobs", methods=["GET", "POST"])
+def jobs():
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT * FROM jobs"))
+        table = result.all()
+        result_dict = [row._asdict() for row in table]
+    print(result_dict)
+    return result_dict
+
+
 @app.route("/messages", methods=["GET", "POST"])
 def get_messages():
     with engine.connect() as conn:
