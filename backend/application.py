@@ -31,6 +31,18 @@ def posts():
     return result_dict
 
 
+@app.route("/addposts", methods=["GET", "POST"])
+def posts():
+    username = dict['username']
+    content = dict['content']
+    likes = dict['likes']
+    with engine.connect() as conn:
+        conn.execute(text(
+            'INSERT INTO messages (username, content, likes) VALUES ("' + username + '", "' + content + '", ' + likes + ')'))
+
+    return "added"
+
+
 @app.route("/jobs", methods=["GET", "POST"])
 def jobs():
     with engine.connect() as conn:
