@@ -9,7 +9,7 @@ function PostBoard() {
   const [posts, setPosts] = useState([{username: "", content: "", likes: 0}])
   const [userPost, setUserPost] = useState({username: "", content: "", likes: 0})
   const [showForm, setShowForm] = useState(false)
-  const [postsArr, setPostsArr] = useState([{username: "user1", content: "post1", likes: "0"}, {username: "user2", content: "post2", likes: 0}]);
+
   function handleInput(event) {
     const {value} = event.target;
     setUserPost({...userPost, "content":value})
@@ -37,7 +37,7 @@ function PostBoard() {
       console.error('There was a problem with the fetch operation:', error);
     });
     posts.push(userPost)
-    setPostsArr(...posts)
+    setPosts(...posts)
     handleHideForm()
   }
 

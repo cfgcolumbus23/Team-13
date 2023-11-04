@@ -17,6 +17,7 @@ function Navbar() {
                 <Link to="/" ><MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem></Link>
                 <Link to="/messages" ><MenuItem icon={<ReceiptOutlinedIcon />}>Messages</MenuItem></Link>
                 <Link to="/login" ><MenuItem icon={<PeopleOutlinedIcon />}>Login</MenuItem></Link>
+                <Link to="/chat" ><MenuItem icon={<ReceiptOutlinedIcon />}>Chat</MenuItem></Link>
             </Menu>
         </Sidebar>
         </div>

@@ -10,6 +10,7 @@ import Home from './components/Homepage/Homepage.js';
 import JobPosting from './components/JobPostings/JobPostings.js';
 import Login from './components/Loginpage/Loginpage.js';
 import MessageDisplay from './components/MessageBoard/MessageBoard';
+import ChatBox from './components/Messagepage/ChatBox';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/messages" element={<MessageDisplay />} />
         <Route path="/job-posting" element={<JobPosting />} />
         <Route path="/employee" element={<Employee />} />
+        <Route path="/chat" element={<ChatBox />} />
       </Routes>
     </div>
   );
