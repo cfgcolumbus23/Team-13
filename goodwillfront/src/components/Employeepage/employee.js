@@ -5,6 +5,7 @@ const Employee = () => {
 
     return (
         <><div class="General">
+            <h1>Employee Information</h1>
             <h2>Name</h2>
             <p>Display name</p>
             <h2>Phone:</h2>
@@ -26,7 +27,8 @@ const Employee = () => {
                 <p>Display pay sched</p>
                 <h2>Hours worked</h2>
                 <p>Display hours worked in pay period</p>
-            </div></>  )
+            </div></>  
+            )
 }
 
 export default Employee;

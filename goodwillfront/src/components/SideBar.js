@@ -5,15 +5,15 @@ const SideBar = props => {
   const sidebarClass = props.isOpen ? "sidebar open" : "sidebar";
   return (
     <div className={sidebarClass}>
-      <li><Link to={"/"}>Home</Link></li>
-      <li><Link to={"/messages"}>Messages</Link></li>
-      <li><Link to={"/job-posting"}>Jobposting</Link></li>
-      <li><Link to={"/login"}>Login</Link></li>
-      <li><Link to={"/employee"}>Employee</Link></li>
+      <button><Link to={"/"}>Home</Link></button>
+      <button><Link to={"/messages"}>Messages</Link></button>
+      <button><Link to={"/job-posting"}>Jobposting</Link></button>
+      <button><Link to={"/login"}>Login</Link></button>
+      <button><Link to={"/employee"}>Employee</Link></button>
       <button onClick={props.toggleSidebar} className="sidebar-toggle">
         Menu
       </button>
     </div>
-  );
+  )
 };
 export default SideBar;
