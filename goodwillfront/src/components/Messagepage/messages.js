@@ -24,10 +24,6 @@ function Messages() {
     const {value} = event.target;
     setUserData({...userData, "message": value});
   }
-
-
-  
-
   function handleSend(event) {
     setMessages(...messages,messages.push(userData.message));
     fetch('http://localhost:5000/messages', {
