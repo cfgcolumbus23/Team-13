@@ -43,8 +43,8 @@ function PostBoard() {
     });
   };
     sendPost();
-    posts.push(userPost)
-    setPosts(...posts)
+    postsDisplay.push(userPost)
+    setPosts(...postsDisplay)
     handleHideForm()
   }
 
@@ -54,7 +54,7 @@ function PostBoard() {
   }
   function handleHideForm() {
     setShowForm(false);
-    navigate("/");
+    // navigate("/");
   }
 
   const [postsDisplay, setPostsDisplay] = useState([]); 
@@ -100,7 +100,7 @@ function PostBoard() {
         return response.json(); 
       })
       .then(data => {
-        setPosts(data); 
+        setPostsDisplay(data); 
       })
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);

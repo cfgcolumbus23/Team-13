@@ -33,12 +33,16 @@ def posts():
 
 @app.route("/addposts", methods=["GET", "POST"])
 def add_posts():
+    dict = request.json
     username = dict['username']
     content = dict['content']
     likes = dict['likes']
+    print("here")
+    print(content)
+    print(username)
     with engine.connect() as conn:
         conn.execute(text(
-            'INSERT INTO messages (username, content, likes) VALUES ("' + username + '", "' + content + '", ' + likes + ')'))
+            'INSERT INTO posts (username, content, likes) VALUES ("' + username + '", "' + content + '", 0)'))
 
     return "added"
 
@@ -74,6 +78,7 @@ def texts():
 
 @app.route("/insert", methods=["GET", "POST"])
 def insert():
+    print("here")
     dict = request.json
     username = dict['username']
     message = dict['message']
