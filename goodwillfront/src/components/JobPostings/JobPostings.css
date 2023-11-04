@@ -1,35 +1,34 @@
 
 .card {
-    display: flex;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    overflow: hidden;
-    margin: 10px;
-    /* Add any other styling you prefer */
-  }
-  
-  .card-image {
-    width: 100px; /* Adjust the width as needed */
-    height: 100px; /* Adjust the height as needed */
-    object-fit: cover;
-  }
-  
-  .card-content {
-    padding: 10px;
-  }
-  
-  .card-title {
-    font-size: 1.2em;
-    margin: 0;
-  }
-  
-  .card-subtitle {
-    font-size: 1em;
-    margin: 5px 0;
-  }
-  
-  .card-description {
-    font-size: 0.9em;
-    margin: 0;
-  }
-  
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  overflow: hidden;
+  margin: 10px;
+  /* Add any other styling you prefer */
+}
+
+.card-image {
+  height: 100px; /* Adjust the height as needed */
+  object-fit: cover;
+  background-color: gray;
+}
+
+.card-content {
+  padding: 10px;
+}
+
+.card-title {
+  font-size: 1.2em;
+  margin: 0;
+}
+
+.card-subtitle {
+  font-size: 1em;
+  margin: 5px 0;
+}
+
+.card-description {
+  font-size: 0.9em;
+  margin: 0;
+}
