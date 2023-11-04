@@ -36,7 +36,7 @@ def message():
     message = dict['message']
     with engine.connect() as conn:
         conn.execute(text(
-            "INSERT INTO messages (username, password) VALUES ('" + username + "', '" + message + "')"))
+            'INSERT INTO messages (username, password) VALUES ("' + username + '", "' + message + '")'))
 
     return "added"
 
