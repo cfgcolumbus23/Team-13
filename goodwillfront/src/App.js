@@ -1,38 +1,34 @@
 // File: App.js
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Route, Routes } from "react-router-dom";
 import './App.css';
+
+
 import Navbar from './components/Accountpage/Navbar/Navbar.js';
 import Home from './components/Homepage/Homepage.js';
 import JobPosting from './components/JobPostings/JobPostings.js';
 import Login from './components/Loginpage/Loginpage.js';
+import PostButton from './components/PostButton/PostButton.js';
+import MessageDisplay from './components/MessageBoard/MessageBoard.js'; // Import the MessageDisplay component
 
 function App() {
-  const [data, setData] = useState([{}])
-  
-    useEffect(() => {
-      fetch('http://127.0.0.1:5000/test') // Adjust the URL to match your Flask endpoint
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        return response.json();
-      })
-      .then(data => {
-        console.log(data);
-      })
-      .catch(error => {
-        console.error('There was a problem with the fetch operation:', error);
-      });
-  }, [])
+  const [messages, setMessages] = useState([]); // This state will hold the messages
+
+  // Function to handle new message submissions
+  const handleNewMessage = (newMessage) => {
+    setMessages([...messages, newMessage]);
+  };
+
   return (
     <div className="App">
       <Navbar />
+      <PostButton onNewMessage={handleNewMessage} /> {/* Updated PostButton with the handler */}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/job-posting" element={<JobPosting />} /> {/* New hardcoded job posting route */}
+        <Route path="/job-posting" element={<JobPosting />} />
       </Routes>
+      <MessageDisplay messages={messages} /> {/* Display the messages */}
     </div>
   );
 }
