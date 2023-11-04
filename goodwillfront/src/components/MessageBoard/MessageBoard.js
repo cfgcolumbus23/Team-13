@@ -52,7 +52,7 @@ const MessageDisplay = () => {
   // const[messages, setMessages] = useState([{username: string, message: string}]);
   getMessages();
   console.log(messages)
-  // messages = [{'username': 'robert', 'content': 'This is some dummy data to see the summary!'}]
+  messages = [{'username': 'robert', 'content': 'This is some dummy data to see the summary!'}]
   // console.log(messages)
   // const [message, setMyList] = useState(messages);
   // setMyList(messages)
