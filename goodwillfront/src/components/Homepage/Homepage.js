@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import JobPosting from '../JobPostings/JobPostings';
 import './Homepage.css';
+import PostBoard from '../PostBoard/PostBoard';
 
 function Homepage() {
     const [messages, setMessages] = useState([]);
@@ -38,7 +39,7 @@ function Homepage() {
                 </div>
                 <div className="horizontal-container">
                     <div className="column-container post-container">
-                        <PostBoard></PostBoard>
+                        <PostBoard />
                     </div>
                     <div className="column-container job-container">
                         <JobPosting />
