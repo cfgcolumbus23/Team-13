@@ -12,12 +12,7 @@ import MessageDisplay from './components/MessageBoard/MessageBoard.js'; // Impor
 import PostButton from './components/PostButton/PostButton.js';
 
 function App() {
-  const [messages, setMessages] = useState([]); // This state will hold the messages
-
-  // Function to handle new message submissions
-  const handleNewMessage = (newMessage) => {
-    setMessages([...messages, newMessage]);
-  };
+  
 
   return (
     <div className="App">
