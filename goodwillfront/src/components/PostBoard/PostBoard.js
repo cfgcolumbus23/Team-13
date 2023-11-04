@@ -6,18 +6,23 @@ import { react } from "@babel/types";
 
 
 function PostBoard() {
+
   const [posts, setPosts] = useState([{username: "", content: "", likes: 0}])
   const [userPost, setUserPost] = useState({username: "", content: "", likes: 0})
   const [showForm, setShowForm] = useState(false)
-  const [postsArr, setPostsArr] = useState([{username: "user1", content: "post1", likes: "0"}, {username: "user2", content: "post2", likes: 0}]);
   function handleInput(event) {
     const {value} = event.target;
     setUserPost({...userPost, "content":value})
   }
 
+  function handleUsername(event) {
+    const {value} = event.target;
+    setUserPost({...userPost, "username":value})
+  }
+
 
   function handlePost() {
-    fetch('http://localhost:5000/api/message', {
+    const sendPost = () => {fetch('http://127.0.0.1:5000/addposts', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -36,8 +41,10 @@ function PostBoard() {
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
     });
+  };
+    sendPost();
     posts.push(userPost)
-    setPostsArr(...posts)
+    setPosts(...posts)
     handleHideForm()
   }
 
@@ -51,11 +58,30 @@ function PostBoard() {
 
 
 // load the posts array with data from the backend once the component mounts
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/posts')
-  //       .then(response => response.json())
-  //       .then((postData)=> {setPosts(postData)});
-  // }, []);
+  useEffect(() => {
+    const fetchMessages = () => {
+      fetch('http://127.0.0.1:5000/posts', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json(); 
+      })
+      .then(data => {
+        setPosts(data); 
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
+    };
+
+    fetchMessages();
+  }, []);
 
 
 
@@ -65,7 +91,14 @@ function PostBoard() {
       {showForm ? (
         <div>
           <form>
-            <input type="text" onChange={handleInput}></input>
+          <div className="form-group">
+              <label htmlFor="username">Username:</label>
+              <input type="text" className="form-control" id="username" placeholder="Enter username" onChange={handleUsername} />
+          </div>
+          <div className="form-group">
+              <label htmlFor="password">Content:</label>
+              <input className="form-control" id="content" placeholder="Enter content" onChange={handleInput}/>
+          </div>
           </form>
           <button type="submit" className="btn btn-primary btn-block" onClick={handlePost}>Submit</button>
         </div>
