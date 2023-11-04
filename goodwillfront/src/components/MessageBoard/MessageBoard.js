@@ -85,19 +85,19 @@ const MessageDisplay = () => {
 
   return (
     <div>
-      <h1>Announcements</h1>
+      <h1 class='center'>Announcements</h1>
       <div id='divbox'>{messageElements}</div>
-      <h1>Add Announcements</h1>
+      <h1 class='center'>Add Announcements</h1>
       <form id="loginForm">
           <div className="form-group">
-              <label htmlFor="username">Username:</label>
+              <h6 class='center' htmlFor="username">Username:</h6>
               <input type="text" className="form-control" id="username" placeholder="Enter username" onChange={handleUsernameInput} />
           </div>
           <div className="form-group">
-              <label htmlFor="password">Content:</label>
+              <h6 class='center' htmlFor="password">Content:</h6>
               <input className="form-control" id="content" placeholder="Enter content" onChange={handleContentInput}/>
           </div>
-          <button type="submit" className="btn btn-primary btn-block" onClick={handleAdd}>Add</button>
+          <button type="submit" className="center btn btn-primary btn-block" onClick={handleAdd}>Add</button>
       </form>
     </div>
     
