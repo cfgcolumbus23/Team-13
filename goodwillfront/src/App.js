@@ -8,14 +8,14 @@ import Login from './components/Loginpage/Loginpage.js';
 import JobPosting from './components/JobPostings/JobPostings.js';
 import Employee from './components/Employeepage/employee.js';
 
-function App() {
+const App = () => {
   return (
     <div className="App">
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+        {/* <Route path="/" element={<Home />} /> */}
         <Route path="/login" element={<Login />} />
-        <Route path="/job-posting" element={<JobPosting />} /> {/* New hardcoded job posting route */}
+        <Route path="/job-posting" element={<JobPosting />} />
         <Route path="/employee" element={<Employee />} />
       </Routes>
     </div>
