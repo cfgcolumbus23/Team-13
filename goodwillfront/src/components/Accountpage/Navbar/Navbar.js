@@ -11,14 +11,16 @@ import './Navbar.css';
 
 function Navbar() {
     return (
-
-        <Sidebar style={{ height: "100vh" }}>
+        <div>
+            <Sidebar style={{ height: "100vh", width: "10vw" }}>
             <Menu>
                 <Link to="/" ><MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem></Link>
                 <Link to="/messages" ><MenuItem icon={<ReceiptOutlinedIcon />}>Messages</MenuItem></Link>
                 <Link to="/login" ><MenuItem icon={<PeopleOutlinedIcon />}>Login</MenuItem></Link>
             </Menu>
         </Sidebar>
+        </div>
+        
     );
 }
 export default Navbar;
