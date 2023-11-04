@@ -12,7 +12,7 @@ function PostBoard() {
 
   function handleInput(event) {
     const {value} = event.target;
-    setUserPost({...userPost, "content":value})
+    setUserPost({...userPost, content:value})
   }
 
 
