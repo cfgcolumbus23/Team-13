@@ -42,11 +42,11 @@ function Loginpage() {
       <form>
         <div className="input-field">
           <div className='input-label'>Username</div>
-          <input type="text" id="username" onChange="handleUsernameInput"/>
+          <input type="text" id="username" onChange={handleUsernameInput}/>
         </div>
         <div className="input-field">
         <div className='input-label'>Password</div>
-          <input type="password" id="password" onChange="handlePasswordInput"/>
+          <input type="password" id="password" onChange={handlePasswordInput}/>
         </div>
         <button className="login-btn" onClick="handleLogin">Login</button>
       </form>

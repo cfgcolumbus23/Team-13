@@ -61,8 +61,8 @@ function Messages() {
             {messages.map((content, index)=>{return (<Message model={{sender: content.username, message: content.message}}></Message>)}) }
 
           </MessageList>
-          <MessageInput placeholder="Type message here" onChange="handleInput"/>
-          <button type="button" onClick="handleSend">Send</button>
+          <MessageInput placeholder="Type message here" onChange={handleInput}/>
+          <button type="button" onClick={handleSend}>Send</button>
         </ChatContainer>
       </MainContainer>
     </div> 
