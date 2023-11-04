@@ -39,18 +39,17 @@
       flex-direction: column; /* Stack the links vertically */
     }
   
-  
     .nav{
       padding: 10px; /* Reduce padding for smaller screens */
       text-align: left; /*Align text to the left */
       display:flex;
-      color: "white";
-      background-color: "DodgerBlue";
       padding: "10px";
       font-family: "Arial";
       width: "250px";
+      color: rgb(51,100,200);
+      background: linear-gradient(90deg, rgba(51,100,200,1) 2%, rgba(46,98,210,0.6470237753304446) 17%, rgba(204,220,255,1) 100%);
         };
-  }
+   }
     
   
   
