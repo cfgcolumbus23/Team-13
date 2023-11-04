@@ -15,7 +15,7 @@ def testing():
         for row in result_dict:
             print(row)
 
-    return 0
+    return "works"
 
 
 @app.route("/api/message", methods=["POST"])
@@ -31,4 +31,4 @@ def check_login():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=3000)
+    app.run(debug=True, port=5000)
