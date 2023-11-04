@@ -19,10 +19,26 @@ def testing():
     return "works"
 
 
+@app.route("/posts")
+def testing():
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT * FROM posts"))
+        table = result.all()
+        result_dict = [row._asdict() for row in table]
+
+    return result_dict
+
+
 @app.route("/api/message", methods=["POST"])
 def message():
-    print(request.json)
-    return request.json
+    dict = request.json
+    username = dict['username']
+    message = dict['message']
+    with engine.connect() as conn:
+        conn.execute(text(
+            "INSERT INTO messages (username, password) VALUES ('" + username + "', '" + message + "')"))
+
+    return "added"
 
 
 @app.route("/login", methods=["POST"])
