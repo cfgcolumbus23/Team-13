@@ -1,20 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from "react-router-dom";
 
+
 import { react } from "@babel/types";
+
 
 function PostBoard() {
   const [posts, setPosts] = useState([{username: "", content: "", likes: 0}])
   const [userPost, setUserPost] = useState({username: "", content: "", likes: 0})
   const [showForm, setShowForm] = useState(false)
-  const postsArr = [{username: "user1", content: "post1", likes: "0"}, {username: "user2", content: "post2", likes: 0}];
-  function handleShowForm() {
-    setShowForm(true)
-  }
+  const [postsArr, setPostsArr] = useState([{username: "user1", content: "post1", likes: "0"}, {username: "user2", content: "post2", likes: 0}]);
   function handleInput(event) {
     const {value} = event.target;
     setUserPost({...userPost, "content":value})
   }
+
 
   function handlePost() {
     fetch('http://localhost:5000/api/message', {
@@ -36,20 +36,28 @@ function PostBoard() {
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
     });
-
+    posts.push(userPost)
+    setPostsArr(...posts)
     handleHideForm()
   }
 
+
+  function handleShowForm() {
+    setShowForm(true)
+  }
   function handleHideForm() {
     setShowForm(false);
   }
 
 
-//   useEffect(() => {
-//     fetch('http://localhost:5000/posts')
-//         .then(response => response.json())
-//         .then((postData)=> {setPosts(postData)});
-//   }, []); 
+// load the posts array with data from the backend once the component mounts
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/posts')
+  //       .then(response => response.json())
+  //       .then((postData)=> {setPosts(postData)});
+  // }, []);
+
+
 
 
   return (
@@ -64,24 +72,24 @@ function PostBoard() {
         ) : (
             <div>
             <ul>
-
-                {/* in the comments is the fucntiont to output each item in the posts array as a list item*/}
-                {/* {posts.map((content, index)=>
-                    {return (<li model={{sender: content.username, message: content.message}}></li>)}) } */}
-                    {postsArr.map((post, index) => (
-          <li key={index}>
-            <strong>Username:</strong> {post.username}
-            <br />
-            <strong>Content:</strong> {post.content}
-          </li>
-        ))}
+              {posts.map((post, index) => (
+                <li key={index}>
+                  <strong>Username:</strong> {post.username}
+                  <br />
+                  <strong>Content:</strong> {post.content}
+                  <br />
+                  <strong>Likes:</strong> {post.likes}
+                </li>
+              ))}
             </ul>
             <button type="button" onClick={handleShowForm}>Post</button>
             </div>
             )
         }
-    </div> 
+    </div>
   );
 }
 
+
 export default PostBoard;
+

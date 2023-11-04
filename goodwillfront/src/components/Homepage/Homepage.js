@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import JobPosting from '../JobPostings/JobPostings';
 import './Homepage.css';
+import PostBoard from '../PostBoard/PostBoard';
 
 function Homepage() {
     const [messages, setMessages] = useState([]);
@@ -38,12 +39,9 @@ function Homepage() {
                 </div>
                 <div className="horizontal-container">
                     <div className="column-container post-container">
-                        {/* You would place your PostButton and MessageDisplay components here if needed */}
+                        <PostBoard />
                     </div>
                     <div className="column-container job-container">
-                        <JobPosting />
-                        <JobPosting />
-                        <JobPosting />
                         <JobPosting />
                         <JobPosting />
                     </div>
