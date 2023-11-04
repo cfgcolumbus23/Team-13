@@ -38,6 +38,15 @@ function ChatBox() {
     setNewMessage({ username: '', message: '', receivername: '' });
   }
 
+
+  // load the posts array with data from the backend once the component mounts
+  // useEffect(() => {
+  //   fetch('http://localhost:5000/posts')
+  //       .then(response => response.json())
+  //       .then((postData)=> {setPosts(postData)});
+  // }, []);
+
+  
   return (
     <div>
       <h1>Chat Room</h1>
