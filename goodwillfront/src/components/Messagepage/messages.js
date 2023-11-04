@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 function ChatBox() {
   const [messageHistory, setMessageHistory] = useState([]);
   const [newMessage, setNewMessage] = useState({ username: '', message: '', receivername: '' });
-
+  messageHistory.push({username: '', messsage: 'How can I help you today?', receivername: ''});
+  setMessageHistory([...messageHistory]);
   const handleSendMessage = () => {
     const message = {
       username: newMessage.username,
