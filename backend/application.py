@@ -64,6 +64,16 @@ def get_messages():
     return result_dict
 
 
+@app.route("/texts", methods=["GET", "POST"])
+def texts():
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT * FROM texts"))
+        table = result.all()
+        result_dict = [row._asdict() for row in table]
+    print(result_dict)
+    return result_dict
+
+
 @app.route("/addmessage", methods=["POST"])
 def message():
     print("came here")
