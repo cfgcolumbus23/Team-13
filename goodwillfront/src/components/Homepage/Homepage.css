@@ -18,7 +18,6 @@
 .header-title {
     flex-basis: 24vw; 
     height: 12vh;
-    background-color: #6c7a89; /* A muted blue-gray shade for the header */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -63,8 +62,7 @@
 }
 
 .job-container {
-    flex-basis: 41vw; 
-    height: 88vh;
+    flex-basis: 41vw;
     background-color: #2980b9; 
     /* Represents the job listings area */
 }
