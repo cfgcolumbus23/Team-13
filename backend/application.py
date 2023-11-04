@@ -74,6 +74,7 @@ def texts():
         table = result.all()
         result_dict = [row._asdict() for row in table]
     print(result_dict)
+    return result_dict
 
 
 @app.route("/insert", methods=["GET", "POST"])
