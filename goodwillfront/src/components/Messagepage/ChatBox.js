@@ -5,18 +5,36 @@ function ChatBox() {
   const [newMessage, setNewMessage] = useState({ username: '', message: '', receivername: '' });
 
   const handleSendMessage = () => {
-    // Create a new message object with the current timestamp
     const message = {
       username: newMessage.username,
       message: newMessage.message,
-      receivername: newMessage.receivername, // Corrected the field name
+      receivername: newMessage.receivername, 
       timestamp: new Date().toLocaleString(),
     };
 
-    // Update the message history with the new message
-    setMessageHistory([...messageHistory, message]);
+    // post request to insert new message to database
+    fetch('http://localhost:5000/api/message', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(message)
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(responseData => {
+        console.log(responseData);
+      })
+      .catch(error => {
+        console.error('There was a problem with the fetch operation:', error);
+      });
 
-    // Clear the input fields
+    // Update the state and clear the input
+    setMessageHistory([...messageHistory, message]);
     setNewMessage({ username: '', message: '', receivername: '' });
   }
 
