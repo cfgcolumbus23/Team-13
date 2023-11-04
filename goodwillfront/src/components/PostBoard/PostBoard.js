@@ -6,9 +6,9 @@ import { react } from "@babel/types";
 
 
 function PostBoard() {
-  const [posts, setPosts] = useState([{username: "", content: "", likes: 0}])
-  const [userPost, setUserPost] = useState({username: "", content: "", likes: 0})
-  const [showForm, setShowForm] = useState(false)
+  const [posts, setPosts] = useState([{username: "", content: "", likes: 0}])   // array of posts
+  const [userPost, setUserPost] = useState({username: "", content: "", likes: 0})   // post object
+  const [showForm, setShowForm] = useState(false)   // boolean variable to keep track of showForm status
 
   function handleInput(event) {
     const {value} = event.target;
@@ -17,6 +17,7 @@ function PostBoard() {
 
 
   function handlePost() {
+    // post request to send the new post to the backend
     fetch('http://localhost:5000/api/message', {
     method: 'POST',
     headers: {
@@ -36,9 +37,11 @@ function PostBoard() {
     .catch(error => {
       console.error('There was a problem with the fetch operation:', error);
     });
+
+    // update the array and the state
     posts.push(userPost)
     setPosts(...posts)
-    handleHideForm()
+    handleHideForm()    // hide the post form
   }
 
 
@@ -50,14 +53,12 @@ function PostBoard() {
   }
 
 
-// load the posts array with data from the backend once the component mounts
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/posts')
-  //       .then(response => response.json())
-  //       .then((postData)=> {setPosts(postData)});
-  // }, []);
-
-
+//load the posts array with data from the backend once the component mounts
+  useEffect(() => {
+    fetch('http://localhost:5000/posts')
+        .then(response => response.json())
+        .then((postData)=> {setPosts(postData)});
+  }, []);
 
 
   return (

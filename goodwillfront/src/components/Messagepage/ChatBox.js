@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ChatBox() {
   const [messageHistory, setMessageHistory] = useState([]);
@@ -40,13 +40,13 @@ function ChatBox() {
 
 
   // load the posts array with data from the backend once the component mounts
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/posts')
-  //       .then(response => response.json())
-  //       .then((postData)=> {setPosts(postData)});
-  // }, []);
+  useEffect(() => {
+    fetch('http://localhost:5000/message')
+        .then(response => response.json())
+        .then((messageData)=> {setMessageHistory(messageData)});
+  }, []);
 
-  
+
   return (
     <div>
       <h1>Chat Room</h1>
