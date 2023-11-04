@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom";
 import './App.css';
 
 
-import Account from './components/Accountpage/Account.js';
 import Navbar from './components/Accountpage/Navbar/Navbar.js';
 import Employee from './components/Employeepage/employee.js';
 import Home from './components/Homepage/Homepage.js';
@@ -22,7 +21,6 @@ const App = () => {
         <Route path="/messages" element={<MessageDisplay />} />
         <Route path="/job-posting" element={<JobPosting />} />
         <Route path="/employee" element={<Employee />} />
-        <Route path="/account" element={<Account />} />
       </Routes>
     </div>
   );
