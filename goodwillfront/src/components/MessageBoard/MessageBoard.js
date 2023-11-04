@@ -5,7 +5,7 @@ import { Route, Routes } from "react-router-dom";
 import { react } from "@babel/types";
 
 
-function PostBoard() {
+function PostBoard2() {
   const [posts, setPosts] = useState([{username: "", content: "", likes: 0}])
   const [userPost, setUserPost] = useState({username: "", content: "", likes: 0})
   const [showForm, setShowForm] = useState(false)
@@ -91,5 +91,5 @@ function PostBoard() {
 }
 
 
-export default PostBoard;
+export default PostBoard2;
 
