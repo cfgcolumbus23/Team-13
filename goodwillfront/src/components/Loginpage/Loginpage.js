@@ -1,5 +1,5 @@
+import { useState } from 'react';
 import './Loginpage.css';
-import {useState} from 'react';
 
 
 function Loginpage() {
@@ -17,7 +17,7 @@ function Loginpage() {
     
     function handleLogin() {
       console.log(loginData.username);
-      fetch('http://localhost:5000/login', {
+      fetch('http://127.0.0.1:5000/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
