@@ -1,18 +1,15 @@
 import React from 'react';
 import './JobPostings.css';
-function JobPosting() {
+function JobPosting(props) {
     // Hardcoded job data for demonstration
     const job = {
-        title: "Frontend Developer",
-        company: "Tech Solutions Inc",
-        location: "Remote",
-        type: "Full-Time",
-        description: "We are looking for a skilled frontend developer to join our team...",
-        requiredQualifications: [
-            "Bachelor's degree in Computer Science or related field",
-            "3+ years of experience in frontend development",
-            "Proficiency in React.js and modern JavaScript",
-        ],
+        title: props.title,
+        company: props.company,
+        location: props.location,
+        type: props.type,
+        description: props.description,
+        requiredQualifications: props.requiredQualifications,
+        salaryIncrease: props.salaryIncrease,
 
     };
 
@@ -20,9 +17,10 @@ function JobPosting() {
         <div className="card">
             <div className="card-image" ></div>
                 <div className="card-content">
-                <h2 className="card-title">title</h2>
-                <h3 className="card-subtitle">subtitle</h3>
-                <p className="card-description">description</p>
+                <h2 className="card-title">{job.title}</h2>
+                <h3 className="card-subtitle">{job.company}</h3>
+                <p className="card-description">{job.description}</p>
+                <h3 className="card-subtitle">Salary Increase: {job.salaryIncrease}</h3>
             </div>
         </div>
     );
