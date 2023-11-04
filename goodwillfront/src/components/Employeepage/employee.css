@@ -4,10 +4,22 @@
     margin-right: 10px;
     margin-left: 10px;
     text-align: left;
-    margin-left: 251px;
+    stroke: cornflowerblue;
+   
 }
+
+
+
+
+img {
+    margin-bottom: 400pc;
+    float: right;
+
+}
+
 
 .content{
     flex: 1;
     float: right;
 }
+
