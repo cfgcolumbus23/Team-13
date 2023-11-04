@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .card {
   display: flex;
@@ -34,4 +35,8 @@
 .card-description {
   font-size: 0.9em;
   margin: 0;
+=======
+.job-posting{
+    margin-top: 10px;
+>>>>>>> feature-toggle
 }
