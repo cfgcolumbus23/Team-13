@@ -1,6 +1,5 @@
 import React from 'react';
-//import './JobPosting.css'; // Style your component here
-
+import './JobPostings.css';
 function JobPosting() {
     // Hardcoded job data for demonstration
     const job = {
@@ -18,20 +17,13 @@ function JobPosting() {
     };
 
     return (
-        <div className="job-posting">
-            <h1>{job.title}</h1>
-            <h2>{job.company}</h2>
-            <p>{job.location} | {job.type}</p>
-            <h3>Description:</h3>
-            <p>{job.description}</p>
-            <h3>Required Qualifications:</h3>
-            <ul>
-                {job.requiredQualifications.map((qual, index) => (
-                    <li key={index}>{qual}</li>
-                ))}
-            </ul>
-            {/* ... other sections */}
-        </div>
+        <div className="card">
+      <div className="card-content">
+        <h2 className="card-title">title</h2>
+        <h3 className="card-subtitle">subtitle</h3>
+        <p className="card-description">description</p>
+      </div>
+    </div>
     );
 }
 
