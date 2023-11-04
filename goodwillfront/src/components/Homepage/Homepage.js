@@ -9,7 +9,6 @@ function Homepage() {
     const [searchQuery, setSearchQuery] = useState('');
 
     const [jobs, setJobs] = useState([]); 
-    const [posts, setPosts] = useState([]); 
     useEffect(() => {
         const fetchJobs = () => {
           fetch('http://127.0.0.1:5000/jobs', {
@@ -31,30 +30,8 @@ function Homepage() {
             console.error('There was a problem with the fetch operation:', error);
           });
         };
-
-        const fetchPosts = () => {
-            fetch('http://127.0.0.1:5000/posts', {
-              method: 'GET',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-            })
-            .then(response => {
-              if (!response.ok) {
-                throw new Error('Network response was not ok');
-              }
-              return response.json(); 
-            })
-            .then(data => {
-              setPosts(data); 
-            })
-            .catch(error => {
-              console.error('There was a problem with the fetch operation:', error);
-            });
-          };
     
         fetchJobs(); 
-        fetchPosts();
       }, []); 
 
     
@@ -123,15 +100,7 @@ function Homepage() {
             </div>
             <div className="content-container">
                 <div className="post-board-container">
-                    
-                    <div>
-                        {posts.map(item => (
-                            <div key={item.username}>
-                                <PostBoard />
-                            </div>
-                        ))}
-                        
-                    </div>
+                    <PostBoard />
                 </div>
                 <div className="column-container job-container">
                         <div>
