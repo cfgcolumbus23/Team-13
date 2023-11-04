@@ -24,7 +24,6 @@ function Messages() {
     const {value} = event.target;
     setUserData({...userData, "message": value});
   }
-
   function handleSend(event) {
     setMessages(...messages,messages.push(userData.message));
     fetch('http://localhost:5000/messages', {
@@ -55,10 +54,7 @@ function Messages() {
         <ChatContainer>
           <MessageList>
             
-            {messages.map((content, index)=>
-              {return (<Message model={{message: content.message}}>
-                        <Message.Header sender="content.username" />
-                      </Message>)}) }
+            {messages.map((content, index)=>{return (<Message model={{sender: content.username, message: content.message}}></Message>)}) }
 
           </MessageList>
           <MessageInput placeholder="Type message here" onChange="handleInput"/>
