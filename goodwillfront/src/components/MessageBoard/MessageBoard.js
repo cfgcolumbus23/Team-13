@@ -14,6 +14,7 @@ import { useState, useEffect } from 'react';
 
 const MessageDisplay = () => {
   const [messages, setMessages] = useState([]); 
+  const [addData, setAddData] = useState({username: "", content: ""});
 
   useEffect(() => {
     const fetchMessages = () => {
@@ -40,16 +41,67 @@ const MessageDisplay = () => {
     fetchMessages(); 
   }, []); 
 
+  function handleUsernameInput(event) {
+    const {value} = event.target;
+    setAddData({...addData, "username":value});
+  }
+
+  function handleContentInput(event) {
+    const {value} = event.target;
+    setAddData({...addData, "content":value});
+  } 
+  
+  function handleAdd() {
+    console.log(addData.username);
+    fetch('http://127.0.0.1:5000/addmessage', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(addData)
+  })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+      return response.json();
+    })
+    .then(responseData => {
+      console.log(responseData);
+    })
+    .catch(error => {
+      console.error('There was a problem with the fetch operation:', error);
+    });
+  }
+
   const messageElements = messages.map((message, index) => (
-    <div key={index}>
-      <strong>{message.username}</strong>: {message.content}
+    <div class='border-black background message-square'key={index}>
+      <strong>Username: {message.username}</strong> 
+      <div>
+        {message.content}
+      </div>
     </div>
   ));
 
   return (
     <div>
+      <h1>Announcements</h1>
       <div id='divbox'>{messageElements}</div>
+      <h1>Add Announcements</h1>
+      <form id="loginForm">
+          <div className="form-group">
+              <label htmlFor="username">Username:</label>
+              <input type="text" className="form-control" id="username" placeholder="Enter username" onChange={handleUsernameInput} />
+          </div>
+          <div className="form-group">
+              <label htmlFor="password">Content:</label>
+              <input className="form-control" id="content" placeholder="Enter content" onChange={handleContentInput}/>
+          </div>
+          <button type="submit" className="btn btn-primary btn-block" onClick={handleAdd}>Add</button>
+      </form>
     </div>
+    
+
   );
 };
 

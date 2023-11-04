@@ -41,14 +41,15 @@ def get_messages():
     return result_dict
 
 
-@app.route("/api/message", methods=["POST"])
+@app.route("/addmessage", methods=["POST"])
 def message():
+    print("came here")
     dict = request.json
     username = dict['username']
-    message = dict['message']
+    message = dict['content']
     with engine.connect() as conn:
         conn.execute(text(
-            'INSERT INTO messages (username, password) VALUES ("' + username + '", "' + message + '")'))
+            'INSERT INTO messages (username, content) VALUES ("' + username + '", "' + message + '")'))
 
     return "added"
 
