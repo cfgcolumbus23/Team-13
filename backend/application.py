@@ -2,8 +2,10 @@ from flask import Flask, render_template, request, redirect, session
 from database import engine
 from sqlalchemy import text
 import json
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 app.secret_key = 'your_secret_key'
 
 
@@ -44,6 +46,7 @@ def message():
 @app.route("/login", methods=["POST"])
 def check_login():
     dict = request.json
+    print(dict)
     username = dict['username']
     password = dict['password']
     with engine.connect() as conn:
