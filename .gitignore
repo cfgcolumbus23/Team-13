@@ -20,12 +20,10 @@ node_modules/
 HEAD:goodwillfront/.gitignore
 .eslintcache
 
-
-
 .json
-Frontend:.gitignore
 
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 node_modules
+

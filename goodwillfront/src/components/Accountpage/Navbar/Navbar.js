@@ -11,8 +11,8 @@ import './Navbar.css';
 
 function Navbar() {
     return (
-        <div>
-            <Sidebar style={{ height: "100vh", width: "10vw" }}>
+        <div className="nav">
+        <Sidebar style={{ height: "100vh" }}>
             <Menu>
                 <Link to="/" ><MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem></Link>
                 <Link to="/messages" ><MenuItem icon={<ReceiptOutlinedIcon />}>Messages</MenuItem></Link>
@@ -20,7 +20,6 @@ function Navbar() {
             </Menu>
         </Sidebar>
         </div>
-        
     );
 }
 export default Navbar;
