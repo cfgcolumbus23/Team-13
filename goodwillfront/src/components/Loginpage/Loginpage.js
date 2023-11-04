@@ -16,6 +16,7 @@ function Loginpage() {
     } 
     
     function handleLogin() {
+      console.log(loginData.username);
       fetch('http://localhost:5000/login', {
       method: 'POST',
       headers: {
@@ -35,23 +36,26 @@ function Loginpage() {
       .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
       });
-      let username = loginData.username;
     }
 
     return (
-      <div className="login-pane">
-        <h1 className='login-label'>User Login</h1>
-      <form>
-        <div className="input-field">
-          <div className='input-label'>Username</div>
-          <input type="text" id="username" onChange={handleUsernameInput}/>
+      <div className="container">
+        <div className="row justify-content-center">
+            <div className="col-md-6 mt-5">
+                <h2 className="text-center">Login</h2>
+                <form id="loginForm">
+                    <div className="form-group">
+                        <label htmlFor="username">Username:</label>
+                        <input type="text" className="form-control" id="username" placeholder="Enter username" onChange={handleUsernameInput} />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="password">Password:</label>
+                        <input type="password" className="form-control" id="password" placeholder="Enter password" onChange={handlePasswordInput}/>
+                    </div>
+                    <button type="submit" className="btn btn-primary btn-block" onClick={handleLogin}>Login</button>
+                </form>
+            </div>
         </div>
-        <div className="input-field">
-        <div className='input-label'>Password</div>
-          <input type="password" id="password" onChange={handlePasswordInput}/>
-        </div>
-        <button className="login-btn" onClick={handleLogin}>Login</button>
-      </form>
     </div>
     );
   }
