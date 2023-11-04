@@ -39,20 +39,18 @@
       flex-direction: column; /* Stack the links vertically */
     }
   
-    .navbar a {
+  
+    .nav{
       padding: 10px; /* Reduce padding for smaller screens */
-      text-align: left; /*Align text to the left
-
-      .navbar {
-        display: flex;
-        justify-content: start;
-        align-items: center;
-        flex-direction: vertical; /* Set the direction to column */
-        height: 100vh;
-        background-color: blue; /* Customize background color if needed */
-        color: white; /* Customize text color if needed */
-        padding: 10px; /* Add padding to your Navbar */
-      }
-    }
+      text-align: left; /*Align text to the left */
+      display:flex;
+      color: "white";
+      background-color: "DodgerBlue";
+      padding: "10px";
+      font-family: "Arial";
+      width: "250px";
+        };
+  }
+    
   
   

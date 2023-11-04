@@ -10,14 +10,8 @@ import './Navbar.css';
 
 
 function Navbar() {
-    const navStyle = {
-        color: "white",
-        backgroundColor: "DodgerBlue",
-        padding: "10px",
-        fontFamily: "Arial"
-      };
     return (
-        <div style={navStyle}>
+        <div className="nav">
         <Sidebar style={{ height: "100vh" }}>
             <Menu>
                 <Link to="/" ><MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem></Link>
