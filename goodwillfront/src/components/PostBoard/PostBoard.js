@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Route, Routes } from "react-router-dom";
-
+import './PostBoard.css';
 
 import { react } from "@babel/types";
 
@@ -61,35 +61,40 @@ function PostBoard() {
 
 
   return (
-    <div style={{ position: "relative", height: "500px" }}>
-        {showForm ? (
-            <div>
-                <form>
-                    <input type="text" onChange={handleInput}></input>
-                </form>
-                <button type="submit" className="btn btn-primary btn-block" onClick={handlePost}>Submit</button>
-            </div>
-        ) : (
-            <div>
-            <ul>
-              {posts.map((post, index) => (
-                <li key={index}>
+    <div className="post-board" style={{ position: "relative", height: "auto" }}>
+      {showForm ? (
+        <div>
+          <form>
+            <input type="text" onChange={handleInput}></input>
+          </form>
+          <button type="submit" className="btn btn-primary btn-block" onClick={handlePost}>Submit</button>
+        </div>
+      ) : (
+        <div>
+          <ul style={{ listStyleType: "none", padding: 0 }}>
+            {posts.map((post, index) => (
+              <li className="post-item" key={index}>
+                <div className="post-header">
                   <strong>Username:</strong> {post.username}
-                  <br />
-                  <strong>Content:</strong> {post.content}
-                  <br />
-                  <strong>Likes:</strong> {post.likes}
-                </li>
-              ))}
-            </ul>
-            <button type="button" onClick={handleShowForm}>Post</button>
-            </div>
-            )
-        }
+                  <span className="post-likes">Likes: {post.likes}</span>
+                </div>
+                <div className="post-content">
+                  {post.content}
+                </div>
+                {/* You can add a post footer if you have additional info to display */}
+                {/* <div className="post-footer">
+                  Additional info here
+                </div> */}
+              </li>
+            ))}
+          </ul>
+          <button type="button" className="btn" onClick={handleShowForm}>Post</button>
+        </div>
+        
+        )
+      }
     </div>
   );
 }
 
-
 export default PostBoard;
-

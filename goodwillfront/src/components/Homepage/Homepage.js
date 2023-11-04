@@ -17,36 +17,33 @@ function Homepage() {
         setSearchQuery(event.target.value);
     };
 
-
     // Potentially here you could also filter your messages or job postings based on the searchQuery
     // const filteredMessages = messages.filter(message => message.includes(searchQuery));
 
     return (
         <div className='page'>
-            <div className="column-container">
-                <div className="horizontal-container">
-                    <div className="header-title">
-                        <h1 className='header-text'>Goodwill</h1>
-                    </div>
-                    <div className="search-bar">
-                        <input
-                            type="text"
-                            placeholder="Search..."
-                            value={searchQuery}
-                            onChange={handleSearchChange}
-                            className="search-input"
-                        />
-                    </div>
+            <div className="horizontal-container">
+                <div className="header-title">
+                    <h1 className='header-text'>Goodwill</h1>
                 </div>
-                <div className="horizontal-container">
-                    <div className="column-container post-container">
-                        <PostBoard />
-                    </div>
-                    <div className="column-container job-container">
-                        <JobPosting />
-                        <JobPosting />
-                        <JobPosting />
-                    </div>
+                <div className="search-bar">
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={searchQuery}
+                        onChange={handleSearchChange}
+                        className="search-input"
+                    />
+                </div>
+            </div>
+            <div className="content-container">
+                <div className="post-board-container">
+                    <PostBoard />
+                </div>
+                <div className="job-postings-container">
+                    <JobPosting />
+                    <JobPosting />
+                    <JobPosting />
                 </div>
             </div>
         </div>
@@ -54,4 +51,3 @@ function Homepage() {
 }
 
 export default Homepage;
-
