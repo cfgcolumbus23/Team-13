@@ -21,7 +21,7 @@ def testing():
     return "works"
 
 
-@app.route("/posts")
+@app.route("/posts", methods=["GET", "POST"])
 def posts():
     with engine.connect() as conn:
         result = conn.execute(text("SELECT * FROM posts"))

@@ -10,10 +10,12 @@ import {
   MessageInput,
   MessageList,
 } from "@chatscope/chat-ui-kit-react";
+import { useState } from 'react';
 
-function getMessages(event) {
+var messages = []
+function getMessages() {
   fetch('http://127.0.0.1:5000/messages', {
-  method: 'POST',
+  method: 'GET',
   headers: {
     'Content-Type': 'application/json',
   },
@@ -22,45 +24,58 @@ function getMessages(event) {
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
-    console.log(response.json)
-    return response.json();
+    // console.log("RESPONSE")
+    // console.log(response)
+    // console.log(response.json)
+    // // return response.json
+    response.json().then((data) => {
+      // console.log(data);
+      messages = data;
+      console.log(messages)
+      return data;
+  }).catch((err) => {
+      console.log(err);
+  })
   })
   .then(responseData => {
+    console.log("RESPONSE DATA")
     console.log(responseData);
-
   })
   .catch(error => {
     console.error('There was a problem with the fetch operation:', error);
   });
 
 }
-function createDivs(array) {
-  var container = document.getElementById('container');
-
-  array.forEach(function(item) {
-    var div = document.createElement('div');
-    div.title = 'Username: ' + item.username + ' Content: ' + item.content;
-    container.appendChild(div);
-  });
-}
 
 
 const MessageDisplay = () => {
   // const[messages, setMessages] = useState([{username: string, message: string}]);
-  let messages = getMessages();
-  
+  getMessages();
+  console.log(messages)
+  messages = [{'username': 'robert', 'content': 'This is some dummy data to see the summary!'}]
+  // console.log(messages)
+  // const [message, setMyList] = useState(messages);
+  // setMyList(messages)
   // console.log("start")
   // console.log(messages)
+  const messageElements = [];
+for (let i = 0; i < messages.length; i++) {
+  messageElements.push(
+    <div key={i}>
+      <strong>{messages[i].username}</strong>: {messages[i].content}
+    </div>
+  );
+}
   return (
-      <div id='divbox'>
-        {/* do this */}
+    <div>
+      <div id='divbox'>{messageElements}</div>
       <div>
         Message 1
+      </div>
+        
         <div>
         By Author
       </div>
-      </div>
-      
     </div>
   );
 };
