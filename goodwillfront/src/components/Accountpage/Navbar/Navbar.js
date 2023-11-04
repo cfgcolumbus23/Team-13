@@ -9,8 +9,14 @@ import { alignProperty } from '@mui/material/styles/cssUtils';
 
 
 function Navbar() {
+    const navStyle = {
+        color: "white",
+        backgroundColor: "DodgerBlue",
+        padding: "10px",
+        fontFamily: "Arial"
+      };
     return (
-
+        <div style={navStyle}>
         <Sidebar style={{ height: "100vh" }}>
             <Menu>
                 <MenuItem icon={<HomeOutlinedIcon />}>Home</MenuItem>
@@ -18,6 +24,7 @@ function Navbar() {
                 <MenuItem icon={<PeopleOutlinedIcon />}>Login</MenuItem>
             </Menu>
         </Sidebar>
+        </div>
     );
 }
 export default Navbar;
