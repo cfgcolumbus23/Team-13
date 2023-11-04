@@ -48,7 +48,7 @@ function Loginpage() {
         <div className='input-label'>Password</div>
           <input type="password" id="password" onChange={handlePasswordInput}/>
         </div>
-        <button className="login-btn" onClick="handleLogin">Login</button>
+        <button className="login-btn" onClick={handleLogin}>Login</button>
       </form>
     </div>
     );
