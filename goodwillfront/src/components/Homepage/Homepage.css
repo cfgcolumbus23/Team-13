@@ -81,3 +81,90 @@ Copy code
   }
   
 /* Add any additional styling you need for JobPosting and PostBoard components */
+.page {
+  height: 100vh;
+  width: 90vw;
+  margin: auto; /* Center the page horizontally */
+}
+
+.column-container {
+  display: flex;
+  flex-direction: column;
+  /* Ensures that children components are stacked vertically */
+}
+
+.horizontal-container {
+  display: flex;
+  /* Aligns children components horizontally */
+}
+
+.header-title {
+  flex-basis: 24vw; 
+  height: 12vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Center content within the header title */
+}
+
+.search-bar {
+  flex-grow: 1; 
+  height: 12vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 20px;
+  /* Padding inside the search bar for aesthetic spacing */
+}
+
+.search-input {
+  width: 100%; 
+  padding: 10px;
+  font-size: 16px;
+  border: 2px solid #00015a; 
+  border-radius: 5px;
+  box-sizing: border-box; /* Includes padding and border in width calculation */
+  /* Modern and clean look for the search input */
+}
+
+.search-input::placeholder {
+  color: #00015a; /* Placeholder text color matches the border */
+}
+
+.search-input:focus {
+  outline: none; 
+  border-color: #555; 
+  box-shadow: 0 0 3px #aaa; /* Subtle shadow for depth */
+}
+
+.post-container {
+  flex-basis: 42vw; 
+  height: 88vh;
+  /* Represents the post section area */
+}
+
+.job-container {
+  flex-basis: 41vw;
+  /* Represents the job listings area */
+}
+
+
+@media (max-width: 768px) {
+  .horizontal-container {
+      flex-direction: column;
+      /* Stack horizontally aligned items vertically on smaller screens */
+  }
+
+  .header-title, .search-bar {
+      width: 100%;
+      margin-bottom: 10px; /* Adds spacing between stacked items */
+  }
+
+  .search-bar {
+      padding: 0 10px; 
+  }
+
+  .search-input {
+      width: calc(100% - 20px); /* Adjusts width to account for padding */
+  }
+}
