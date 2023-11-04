@@ -32,13 +32,14 @@ def posts():
 
 
 @app.route("/addposts", methods=["GET", "POST"])
-def posts():
+def add_posts():
+    dict = request.json
     username = dict['username']
     content = dict['content']
     likes = dict['likes']
     with engine.connect() as conn:
         conn.execute(text(
-            'INSERT INTO messages (username, content, likes) VALUES ("' + username + '", "' + content + '", ' + likes + ')'))
+            'INSERT INTO posts (username, content, likes) VALUES ("' + str(username) + '", "' + str(content) + '", ' + str(likes) + ')'))
 
     return "added"
 
@@ -57,6 +58,16 @@ def jobs():
 def get_messages():
     with engine.connect() as conn:
         result = conn.execute(text("SELECT * FROM messages"))
+        table = result.all()
+        result_dict = [row._asdict() for row in table]
+    print(result_dict)
+    return result_dict
+
+
+@app.route("/texts", methods=["GET", "POST"])
+def texts():
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT * FROM texts"))
         table = result.all()
         result_dict = [row._asdict() for row in table]
     print(result_dict)
