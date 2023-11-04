@@ -6,7 +6,8 @@ const SideBar = props => {
   return (
     <div className={sidebarClass}>
       <li><Link to={"/"}>Home</Link></li>
-      <li><Link to={"/messages"}>JobPosting</Link></li>
+      <li><Link to={"/messages"}>Messages</Link></li>
+      <li><Link to={"/job-posting"}>Jobposting</Link></li>
       <li><Link to={"/login"}>Login</Link></li>
       <li><Link to={"/employee"}>Employee</Link></li>
       <button onClick={props.toggleSidebar} className="sidebar-toggle">
